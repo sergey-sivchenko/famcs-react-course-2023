@@ -1,0 +1,6 @@
+{
+  "**/*": "prettier --ignore-unknown --write --cache",
+  "*.{js,jsx}": "eslint --fix --cache",
+  "*.css": "stylelint --fix --cache",
+  "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged"
+}
