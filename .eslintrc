@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json.schemastore.org/eslintrc",
+  "root": true,
+  "extends": ["react-app", "react-app/jest", "prettier"],
+  "rules": {}
+}
