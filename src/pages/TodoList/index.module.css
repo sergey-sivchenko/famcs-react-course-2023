@@ -1,0 +1,8 @@
+/* CSS modules example */
+.container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  justify-content: center;
+}
