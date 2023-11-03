@@ -29,6 +29,7 @@
     "@testing-library/user-event": "^13.5.0",
     "babel-plugin-styled-components": "^2.1.4",
     "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-jest-dom": "^5.1.0",
     "husky": "^8.0.3",
     "imagemin-lint-staged": "^0.5.1",
     "jest-styled-components": "^7.2.0",
@@ -52,5 +53,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=9"
   }
 }
