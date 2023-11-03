@@ -43,4 +43,5 @@ In the project directory, you can run:
 - `npm run prepare` - automatically enable git hooks after install
 - `npm run start` - runs the application in development mode
 - `npm run stylelint` - runs [Stylelint](https://stylelint.io) for all styles
+  (both `css` and [`css-in-js`](https://styled-components.com))
 - `npm run test` - launches the test runner in the interactive watch mode

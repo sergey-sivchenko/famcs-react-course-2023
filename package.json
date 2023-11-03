@@ -18,6 +18,7 @@
     "react": "^18.2.0",
     "react-app-polyfill": "^3.0.0",
     "react-dom": "^18.2.0",
+    "styled-components": "^6.1.0",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
@@ -26,12 +27,17 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "babel-plugin-styled-components": "^2.1.4",
     "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-jest-dom": "^5.1.0",
     "husky": "^8.0.3",
     "imagemin-lint-staged": "^0.5.1",
+    "jest-styled-components": "^7.2.0",
     "lint-staged": "^15.0.2",
+    "postcss-styled-syntax": "^0.5.0",
     "prettier": "^3.0.3",
     "react-scripts": "5.0.1",
+    "react-test-renderer": "^18.2.0",
     "source-map-explorer": "^2.5.3",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0"
@@ -47,5 +53,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=9"
   }
 }
