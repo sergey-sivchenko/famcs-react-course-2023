@@ -1,6 +1,6 @@
 {
-  "**/*": "prettier --ignore-unknown --write --cache",
-  "*.{js,jsx}": "eslint --fix --cache",
-  "*.css": "stylelint --fix --cache",
-  "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged"
+  "*.js?(x)": ["prettier --write --cache", "eslint --fix --cache", "stylelint --fix --cache"],
+  "*.css": ["prettier --write --cache", "stylelint --fix --cache"],
+  "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged",
+  "!((*.js?(x))|(*.css)|(*.{png,jpeg,jpg,gif,svg}))": "prettier --ignore-unknown --write --cache"
 }

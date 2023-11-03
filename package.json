@@ -11,7 +11,7 @@
     "prepare": "husky install",
     "prettier": "prettier",
     "start": "react-scripts start",
-    "stylelint": "stylelint \"src/**/*.css\" --cache",
+    "stylelint": "stylelint \"src/**/*.{css,js}\" --cache",
     "test": "react-scripts test"
   },
   "dependencies": {
