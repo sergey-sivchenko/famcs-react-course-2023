@@ -17,14 +17,22 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => {
-  const [themeMode] = useState("dark");
+  const [mode, setMode] = useState("dark");
 
-  const theme = useMemo(() => createTheme(themeMode), [themeMode]);
+  const toggleMode = () => {
+    if (mode === "dark") {
+      setMode("light");
+    } else {
+      setMode("dark");
+    }
+  };
+
+  const theme = useMemo(() => createTheme(mode), [mode]);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Main />
+      <Main toggleMode={toggleMode} />
     </ThemeProvider>
   );
 };

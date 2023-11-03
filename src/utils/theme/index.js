@@ -7,6 +7,7 @@ const themes = {
 };
 
 export const createTheme = (mode = "dark") => ({
+  action: themes[mode].action,
   background: themes[mode].background,
   common: {
     black: "#000000",
