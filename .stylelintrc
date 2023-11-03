@@ -1,5 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/stylelintrc",
   "extends": ["stylelint-config-standard"],
+  "customSyntax": "postcss-styled-syntax",
   "rules": {}
 }
