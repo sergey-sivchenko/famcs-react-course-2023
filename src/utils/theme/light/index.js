@@ -1,3 +1,7 @@
+const action = {
+  hover: "rgba(0 0 0 / 0.04)",
+};
+
 const background = {
   default: "#e4e4e7",
   paper: "#f6f6f6",
@@ -24,4 +28,4 @@ const text = {
   secondary: "rgba(18 18 18 / .7)",
 };
 
-export { background, divider, primary, secondary, text };
+export { action, background, divider, primary, secondary, text };
