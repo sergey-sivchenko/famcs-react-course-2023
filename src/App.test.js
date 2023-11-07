@@ -3,9 +3,15 @@ import { render, screen } from "@testing-library/react";
 import App from "./App";
 
 describe("<App/>", () => {
-  it("renders Todo list", () => {
+  it("renders application header", () => {
     render(<App />);
 
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Todo list/);
+    expect(screen.getByRole("banner")).toBeInTheDocument();
+  });
+
+  it("renders Todo list by default", () => {
+    render(<App />);
+
+    expect(screen.getByText(/Todo list/)).toBeInTheDocument();
   });
 });
