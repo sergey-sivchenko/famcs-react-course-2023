@@ -6,3 +6,26 @@
   font-size: calc(10px + 2vmin);
   justify-content: center;
 }
+
+.input-container {
+  margin-bottom: 10px;
+}
+
+button {
+  background: none;
+  border: none;
+  color: #f6f6f6;
+  cursor: pointer;
+  font-size: calc(10px + 2vmin);
+  padding: 8px 16px;
+}
+
+input {
+  background: none;
+  border-radius: 6px;
+  border: 1px solid #f6f6f6;
+  color: #f6f6f6;
+  font-size: calc(10px + 2vmin);
+  margin-right: 16px;
+  padding: 8px 16px;
+}
