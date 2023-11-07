@@ -4,3 +4,8 @@
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom";
 import "jest-styled-components";
+import crypto from "crypto";
+
+Object.defineProperty(global, "crypto", {
+  value: crypto.webcrypto,
+});
