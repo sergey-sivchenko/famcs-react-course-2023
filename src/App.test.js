@@ -9,9 +9,9 @@ describe("<App/>", () => {
     expect(screen.getByRole("banner")).toBeInTheDocument();
   });
 
-  it("renders Todo list by default", () => {
+  it("renders My first TODO list by default", () => {
     render(<App />);
 
-    expect(screen.getByText(/Todo list/)).toBeInTheDocument();
+    expect(screen.getByText(/My first TODO list/)).toBeInTheDocument();
   });
 });
