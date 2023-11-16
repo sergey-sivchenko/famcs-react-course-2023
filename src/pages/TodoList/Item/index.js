@@ -1,23 +1,39 @@
-import { useState } from "react";
+import { CheckBoxOutlineBlank } from "@styled-icons/material-outlined/CheckBoxOutlineBlank";
+import { CheckBox } from "@styled-icons/material-outlined/CheckBox";
+import { Close } from "@styled-icons/material-outlined/Close";
 
-import crossImage from "assets/cross.png";
-import tickImage from "assets/tick.png";
+import { removeTodo, updateTodo } from "api/todos";
 
-import { Container, Image, Text } from "./styled";
+import { Container, Content, Text } from "./styled";
 
-function Item(props) {
-  const [isCompleted, setIsCompleted] = useState(props.completed);
+const Item = ({ id, isCompleted, requestTodos, text }) => {
+  const handleTodoClick = async () => {
+    // TODO: Handle error case
+    await updateTodo({ id, isCompleted: !isCompleted, text });
 
-  const toggleCompleteness = () => {
-    setIsCompleted((prevState) => !prevState);
+    requestTodos();
+  };
+
+  const handleRemoveClick = async () => {
+    // TODO: Handle error case
+    await removeTodo(id);
+
+    requestTodos();
   };
 
   return (
-    <Container onClick={toggleCompleteness}>
-      <Image src={isCompleted ? tickImage : crossImage} />
-      <Text>{props.text}</Text>
+    <Container isCompleted={isCompleted}>
+      <Content onClick={handleTodoClick}>
+        {isCompleted ? (
+          <CheckBox size={24} title="Checked" />
+        ) : (
+          <CheckBoxOutlineBlank size={24} title="Unchecked" />
+        )}
+        <Text isCompleted={isCompleted}>{text}</Text>
+      </Content>
+      <Close size={24} title="Remove" onClick={handleRemoveClick} />
     </Container>
   );
-}
+};
 
 export default Item;

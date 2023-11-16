@@ -1,46 +1,35 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 
-import styles from "./index.module.css";
+import { getTodos } from "api/todos";
+import useAsync from "hooks/use-async";
+
 import Item from "./Item";
+import NewItem from "./NewItem";
+import { Container, SubTitle, Title } from "./styled";
 
 const Todo = () => {
-  const [todos, setTodos] = useState([
-    { id: crypto.randomUUID(), isCompleted: true, text: "Create name for the application" },
-    { id: crypto.randomUUID(), isCompleted: true, text: "Create GitHub repository" },
-    { id: crypto.randomUUID(), isCompleted: true, text: "Add repository description" },
-    { id: crypto.randomUUID(), isCompleted: false, text: "Create first react app using CRA" },
-    { id: crypto.randomUUID(), isCompleted: false, text: "Attend class on 24/10/2022" },
-  ]);
-
-  const [newTodo, setNewTodo] = useState("");
-
-  const handleNewTodoInput = useCallback((event) => {
-    setNewTodo(event.target.value);
-  }, []);
-
-  const handleAddTodo = useCallback(() => {
-    setTodos((prevState) => [
-      ...prevState,
-      { id: crypto.randomUUID(), isCompleted: false, text: newTodo },
-    ]);
-    setNewTodo("");
-  }, [newTodo]);
+  const getTodosList = useCallback(() => getTodos(), []);
+  const {
+    execute: requestTodos,
+    isLoading: isTodosLoading,
+    value: todos = [],
+  } = useAsync(getTodosList);
 
   return (
-    <>
-      <h1>Todo list</h1>
-      <div className={styles["input-container"]}>
-        <input className={styles.input} onChange={handleNewTodoInput} value={newTodo} />
-        <button className={styles.button} onClick={handleAddTodo}>
-          Add
-        </button>
-      </div>
-      <div className={styles.container}>
-        {todos.map((todo) => (
-          <Item key={todo.id} id={todo.id} completed={todo.isCompleted} text={todo.text} />
-        ))}
-      </div>
-    </>
+    <Container>
+      <Title>My first TODO list</Title>
+      <SubTitle>Click the items to complete/incomplete them</SubTitle>
+      {todos.map((todo) => (
+        <Item
+          key={todo.id}
+          id={todo.id}
+          isCompleted={todo.isCompleted}
+          requestTodos={requestTodos}
+          text={todo.text}
+        />
+      ))}
+      <NewItem isTodosLoading={isTodosLoading} requestTodos={requestTodos} />
+    </Container>
   );
 };
 
