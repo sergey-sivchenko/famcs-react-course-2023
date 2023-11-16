@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 import Main from "pages/Main";
@@ -19,15 +19,28 @@ const GlobalStyle = createGlobalStyle`
 const App = () => {
   const [mode, setMode] = useState("dark");
 
-  const toggleMode = () => {
+  const toggleMode = useCallback(() => {
     if (mode === "dark") {
       setMode("light");
     } else {
       setMode("dark");
     }
-  };
+  }, [mode]);
 
   const theme = useMemo(() => createTheme(mode), [mode]);
+
+  const storageListener = useCallback((event) => {
+    console.log(event);
+  }, []);
+
+  useEffect(() => {
+    // Note: We need a second tab to see this event: https://developer.mozilla.org/en-US/docs/Web/API/Window/storage_event
+    window.addEventListener("storage", storageListener);
+
+    return () => {
+      window.removeEventListener("storage", storageListener);
+    };
+  }, [storageListener]);
 
   return (
     <ThemeProvider theme={theme}>
