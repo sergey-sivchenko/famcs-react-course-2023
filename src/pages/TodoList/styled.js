@@ -10,10 +10,10 @@ export const Container = styled.div`
 
 export const SubTitle = styled.p`
   color: ${({ theme }) => theme.text.secondary};
-  font-size: 18px;
+  font-size: 22px;
 `;
 
 export const Title = styled.h1`
-  font-size: 24px;
+  font-size: 30px;
   text-align: center;
 `;
