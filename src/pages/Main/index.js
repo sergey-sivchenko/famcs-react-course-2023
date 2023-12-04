@@ -1,5 +1,5 @@
 import Header from "components/Header";
-import TodoList from "pages/TodoList";
+import Todo from "pages/Todo";
 
 import { Container } from "./styled";
 
@@ -8,7 +8,7 @@ const Main = ({ toggleMode }) => {
     <>
       <Header toggleMode={toggleMode} />
       <Container>
-        <TodoList />
+        <Todo />
       </Container>
     </>
   );
