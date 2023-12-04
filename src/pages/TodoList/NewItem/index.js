@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
-import { addTodo } from "api/todos";
+import { requestAddTodo } from "store/todo";
 
 import { AddButton, Container, Input } from "./styled";
 
-const NewItem = ({ isTodosLoading, requestTodos }) => {
+const NewItem = ({ isTodosLoading }) => {
+  const dispatch = useDispatch();
+
   const [text, setText] = useState("");
 
   const handleInputChange = (event) => {
@@ -13,10 +16,12 @@ const NewItem = ({ isTodosLoading, requestTodos }) => {
 
   const handleAddClick = async () => {
     if (text) {
-      await addTodo(text);
-
-      requestTodos();
-      setText("");
+      dispatch(
+        requestAddTodo({
+          onSuccess: () => setText(""),
+          text,
+        }),
+      );
     }
   };
 

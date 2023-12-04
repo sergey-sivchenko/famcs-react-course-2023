@@ -17,6 +17,7 @@ export const Content = styled.div`
 `;
 
 export const Text = styled.p`
+  font-size: 18px;
   margin: 8px;
   text-decoration: ${({ isCompleted }) => (isCompleted ? "line-through" : "none")};
   user-select: none;

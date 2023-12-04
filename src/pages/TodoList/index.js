@@ -1,25 +1,25 @@
-import { useCallback } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { getTodos } from "api/todos";
-import useAsync from "hooks/use-async";
+import { requestTodos } from "store/todo";
 
 import Item from "./Item";
 import NewItem from "./NewItem";
 import { Container, SubTitle, Title } from "./styled";
 
-const Todo = () => {
-  const getTodosList = useCallback(() => getTodos(), []);
-  const {
-    execute: requestTodos,
-    isLoading: isTodosLoading,
-    value: todos = [],
-  } = useAsync(getTodosList);
+const TodoList = () => {
+  const dispatch = useDispatch();
+  const { loading, list } = useSelector((state) => state.todo);
+
+  useEffect(() => {
+    dispatch(requestTodos());
+  }, [dispatch]);
 
   return (
     <Container>
       <Title>My first TODO list</Title>
       <SubTitle>Click the items to complete/incomplete them</SubTitle>
-      {todos.map((todo) => (
+      {list.map((todo) => (
         <Item
           key={todo.id}
           id={todo.id}
@@ -28,9 +28,9 @@ const Todo = () => {
           text={todo.text}
         />
       ))}
-      <NewItem isTodosLoading={isTodosLoading} requestTodos={requestTodos} />
+      <NewItem isTodosLoading={loading} requestTodos={requestTodos} />
     </Container>
   );
 };
 
-export default Todo;
+export default TodoList;
