@@ -1,24 +1,25 @@
+import { useDispatch } from "react-redux";
 import { CheckBoxOutlineBlank } from "@styled-icons/material-outlined/CheckBoxOutlineBlank";
 import { CheckBox } from "@styled-icons/material-outlined/CheckBox";
 import { Close } from "@styled-icons/material-outlined/Close";
 
-import { removeTodo, updateTodo } from "api/todos";
+import { requestRemoveTodo, requestUpdateTodo } from "store/todo";
 
 import { Container, Content, Text } from "./styled";
 
-const Item = ({ id, isCompleted, requestTodos, text }) => {
-  const handleTodoClick = async () => {
-    // TODO: Handle error case
-    await updateTodo({ id, isCompleted: !isCompleted, text });
+const Item = ({ id, isCompleted, text }) => {
+  const dispatch = useDispatch();
 
-    requestTodos();
+  const handleTodoClick = async () => {
+    dispatch(
+      requestUpdateTodo({
+        todo: { id, isCompleted: !isCompleted, text },
+      }),
+    );
   };
 
   const handleRemoveClick = async () => {
-    // TODO: Handle error case
-    await removeTodo(id);
-
-    requestTodos();
+    dispatch(requestRemoveTodo({ id }));
   };
 
   return (
