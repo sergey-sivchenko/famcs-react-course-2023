@@ -1,36 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { requestTodos } from "store/todo";
-
-import Item from "./Item";
-import NewItem from "./NewItem";
-import { Container, SubTitle, Title } from "./styled";
-
-const TodoList = () => {
-  const dispatch = useDispatch();
-  const { loading, list } = useSelector((state) => state.todo);
-
-  useEffect(() => {
-    dispatch(requestTodos());
-  }, [dispatch]);
-
-  return (
-    <Container>
-      <Title>My first TODO list</Title>
-      <SubTitle>Click the items to complete/incomplete them</SubTitle>
-      {list.map((todo) => (
-        <Item
-          key={todo.id}
-          id={todo.id}
-          isCompleted={todo.isCompleted}
-          requestTodos={requestTodos}
-          text={todo.text}
-        />
-      ))}
-      <NewItem isTodosLoading={loading} requestTodos={requestTodos} />
-    </Container>
-  );
-};
+const TodoList = () => (
+  <div>
+    <h1>Todo List will be here</h1>
+    <Link to="/todo/1">Go to My First Todo</Link>
+  </div>
+);
 
 export default TodoList;

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { requestAddTodo } from "store/todo";
+import { requestAddTodoItem } from "store/todo";
 
 import { AddButton, Container, Input } from "./styled";
 
-const NewItem = ({ isTodosLoading }) => {
+const NewItem = ({ isTodoLoading }) => {
   const dispatch = useDispatch();
 
   const [text, setText] = useState("");
@@ -17,7 +17,7 @@ const NewItem = ({ isTodosLoading }) => {
   const handleAddClick = async () => {
     if (text) {
       dispatch(
-        requestAddTodo({
+        requestAddTodoItem({
           onSuccess: () => setText(""),
           text,
         }),
@@ -28,7 +28,7 @@ const NewItem = ({ isTodosLoading }) => {
   return (
     <Container>
       <Input value={text} onChange={handleInputChange}></Input>
-      <AddButton disabled={!text || isTodosLoading} onClick={handleAddClick}>
+      <AddButton disabled={!text || isTodoLoading} onClick={handleAddClick}>
         Add
       </AddButton>
     </Container>
