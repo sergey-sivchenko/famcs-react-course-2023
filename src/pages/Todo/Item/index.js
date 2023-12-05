@@ -3,7 +3,7 @@ import { CheckBoxOutlineBlank } from "@styled-icons/material-outlined/CheckBoxOu
 import { CheckBox } from "@styled-icons/material-outlined/CheckBox";
 import { Close } from "@styled-icons/material-outlined/Close";
 
-import { requestRemoveTodo, requestUpdateTodo } from "store/todo";
+import { requestRemoveTodoItem, requestUpdateTodoItem } from "store/todo";
 
 import { Container, Content, Text } from "./styled";
 
@@ -12,14 +12,14 @@ const Item = ({ id, isCompleted, text }) => {
 
   const handleTodoClick = async () => {
     dispatch(
-      requestUpdateTodo({
+      requestUpdateTodoItem({
         todo: { id, isCompleted: !isCompleted, text },
       }),
     );
   };
 
   const handleRemoveClick = async () => {
-    dispatch(requestRemoveTodo({ id }));
+    dispatch(requestRemoveTodoItem({ id }));
   };
 
   return (

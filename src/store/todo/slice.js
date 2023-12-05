@@ -1,65 +1,70 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { requestAddTodo, requestRemoveTodo, requestTodos, requestUpdateTodo } from "./thunks";
+import {
+  requestAddTodoItem,
+  requestRemoveTodoItem,
+  requestTodoItems,
+  requestUpdateTodoItem,
+} from "./thunks";
 
 export const todoSlice = createSlice({
   name: "todo",
   initialState: {
     error: null,
-    list: [],
+    items: [],
     loading: false,
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(requestAddTodo.pending, (state) => {
+    builder.addCase(requestAddTodoItem.pending, (state) => {
       state.error = null;
       state.loading = true;
     });
-    builder.addCase(requestAddTodo.fulfilled, (state, action) => {
-      state.list = action.payload;
+    builder.addCase(requestAddTodoItem.fulfilled, (state, action) => {
+      state.items = action.payload;
       state.loading = false;
     });
-    builder.addCase(requestAddTodo.rejected, (state, action) => {
+    builder.addCase(requestAddTodoItem.rejected, (state, action) => {
       state.error = action.error;
       state.loading = false;
     });
 
-    builder.addCase(requestTodos.pending, (state) => {
+    builder.addCase(requestTodoItems.pending, (state) => {
       state.error = null;
-      state.list = [];
+      state.items = [];
       state.loading = true;
     });
-    builder.addCase(requestTodos.fulfilled, (state, action) => {
-      state.list = action.payload;
+    builder.addCase(requestTodoItems.fulfilled, (state, action) => {
+      state.items = action.payload;
       state.loading = false;
     });
-    builder.addCase(requestTodos.rejected, (state, action) => {
+    builder.addCase(requestTodoItems.rejected, (state, action) => {
       state.error = action.error;
       state.loading = false;
     });
 
-    builder.addCase(requestRemoveTodo.pending, (state) => {
+    builder.addCase(requestRemoveTodoItem.pending, (state) => {
       state.error = null;
       state.loading = true;
     });
-    builder.addCase(requestRemoveTodo.fulfilled, (state, action) => {
-      state.list = action.payload;
+    builder.addCase(requestRemoveTodoItem.fulfilled, (state, action) => {
+      state.items = action.payload;
       state.loading = false;
     });
-    builder.addCase(requestRemoveTodo.rejected, (state, action) => {
+    builder.addCase(requestRemoveTodoItem.rejected, (state, action) => {
       state.error = action.error;
       state.loading = false;
     });
 
-    builder.addCase(requestUpdateTodo.pending, (state) => {
+    builder.addCase(requestUpdateTodoItem.pending, (state) => {
       state.error = null;
       state.loading = true;
     });
-    builder.addCase(requestUpdateTodo.fulfilled, (state, action) => {
-      state.list = action.payload;
+    builder.addCase(requestUpdateTodoItem.fulfilled, (state, action) => {
+      state.items = action.payload;
       state.loading = false;
     });
-    builder.addCase(requestUpdateTodo.rejected, (state, action) => {
+    builder.addCase(requestUpdateTodoItem.rejected, (state, action) => {
       state.error = action.error;
       state.loading = false;
     });
